@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Page d'expédition</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url('img/Agriculture-1080.jpg');
+      padding: 20px;
+    }
+
+    .shipping-page-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+
+    .shipping-page-container h1 {
+      text-align: center;
+    }
+
+    .shipping-details {
+      margin-bottom: 20px;
+    }
+
+    .shipping-details p {
+      margin: 5px 0;
+    }
+
+    .clickable {
+      cursor: pointer;
+      text-decoration: underline;
+      color: blue;
+    }
+
+    .clickable:hover {
+      text-decoration: none;
+    }
+
+    .map-container {
+      height: 400px;
+      margin-bottom: 20px;
+    }
+
+    .new-shipping-form {
+      margin-top: 30px;
+    }
+
+    .new-shipping-form label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .new-shipping-form input[type="text"],
+    .new-shipping-form input[type="date"],
+    .new-shipping-form input[type="submit"] {
+      margin-bottom: 10px;
+    }
+  </style>
+
+<style>
+    .container {
+      background-image: url('img/Agriculture-1080.jpg');
+      color: #fff;
+      width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-row {
+      margin-bottom: 16px;
+    }
+
+    .form-row label {
+      display: inline-block;
+      width: 120px;
+      font-weight: bold;
+    }
+
+    .form-row input {
+      width: 200px;
+      padding: 6px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    .form-actions {
+      text-align: right;
+    }
+
+    .form-actions button {
+      padding: 8px 16px;
+      background-color: #fa6304;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+
+</head>
+<body>
+  <div class="shipping-page-container">
+    <h1>Expédition des produits</h1>
+
+    <div class="shipping-details">
+      <h3>Expédition 1</h3>
+      <p><strong>Identifiant de l'expédition:</strong> <span class="clickable">Expédition 1</span></p>
+      <p><strong>Identifiant du produit:</strong> <span class="clickable">Produit 1</span></p>
+      <p><strong>Identifiant du transporteur:</strong> <span class="clickable">Transporteur 1</span></p>
+      <p><strong>Date de début:</strong> 2023-05-20</p>
+      <p><strong>Localisation actuelle:</strong> Paris</p>
+      <p><strong>Date prévue d'arrivée:</strong> 2023-05-25</p>
+      <div class="map-container" id="map1"></div>
+    </div>
+
+    <div class="shipping-details">
+      <h3>Expédition 2</h3>
+      <p><strong>Identifiant de l'expédition:</strong> <span class="clickable">Expédition 2</span></p>
+      <p><strong>Identifiant du produit:</strong> <span class="clickable">Produit 2</span></p>
+      <p><strong>Identifiant du transporteur:</strong> <span class="clickable">Transporteur 2</span></p>
+      <p><strong>Date de début:</strong> 2023-05-22</p>
+      <p><strong>Localisation actuelle:</strong> New York</p>
+      <p><strong>Date prévue d'arrivée:</strong> 2023-05-28</p>
+      <div class="map-container" id="map2"></div>
+    </div>
+
+    <!-- Formulaire pour ajouter une nouvelle expédition -->
+    <div class="new-shipping-form">
+      <div class="container">
+        <h1>Formulaire d'expédition</h1>
+    
+        <form>
+          <div class="form-row">
+            <label for="product">Identifiant du produit:</label>
+            <input type="text" id="product" required>
+          </div>
+    
+          <div class="form-row">
+            <label for="carrier">Identifiant du transporteur:</label>
+            <input type="text" id="carrier" required>
+          </div>
+    
+          <div class="form-row">
+            <label for="start-date">Date de début de l'expédition:</label>
+            <input type="date" id="start-date" required>
+          </div>
+    
+          <div class="form-row">
+            <label for="arrival-date">Date prévue d'arrivée:</label>
+            <input type="date" id="arrival-date" required>
+          </div>
+    
+          <div class="form-actions">
+            <button type="submit">Envoyer</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      // Fonction d'initialisation de la carte Google Maps
+      function initMap() {
+        // Coordonnées pour la première expédition
+        var expedition1LatLng = { lat: 48.8566, lng: 2.3522 };
+        // Coordonnées pour la deuxième expédition
+        var expedition2LatLng = { lat: 40.7128, lng: -74.0060 };
+
+        // Création de la carte pour la première expédition
+        var map1 = new google.maps.Map(document.getElementById('map1'), {
+          zoom: 10,
+          center: expedition1LatLng
+        });
+
+        // Création de la marqueur pour la première expédition
+        var marker1 = new google.maps.Marker({
+          position: expedition1LatLng,
+          map: map1
+        });
+
+        // Création de la carte pour la deuxième expédition
+        var map2 = new google.maps.Map(document.getElementById('map2'), {
+          zoom: 10,
+          center: expedition2LatLng
+        });
+
+        // Création de la marqueur pour la deuxième expédition
+        var marker2 = new google.maps.Marker({
+          position: expedition2LatLng,
+          map: map2
+        });
+      }
+    </script>
+    <!-- Inclusion de l'API Google Maps -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=VOTRE_CLE_API&callback=initMap" async defer></script>
+  </div>
+</body>
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Page d'expédition</title>
+  <style>
+    /* Styles CSS */
+  </style>
+</head>
+<body>
+  <div class="shipping-page-container">
+    <h1>Expédition des produits</h1>
+
+    <div class="shipping-details">
+      <h3>Expédition 1</h3>
+      <p><strong>Identifiant de l'expédition:</strong> <span class="clickable" onclick="showDetails('expedition1')">Expédition 1</span></p>
+      <p><strong>Identifiant du produit:</strong> <span class="clickable" onclick="showDetails('product1')">Produit 1</span></p>
+      <p><strong>Identifiant du transporteur:</strong> <span class="clickable" onclick="showDetails('carrier1')">Transporteur 1</span></p>
+      <p><strong>Date de début:</strong> 2023-05-20</p>
+      <p><strong>Localisation actuelle:</strong> Paris</p>
+      <p><strong>Date prévue d'arrivée:</strong> 2023-05-25</p>
+      <div class="map-container" id="map1"></div>
+    </div>
+
+    <div class="shipping-details">
+      <h3>Expédition 2</h3>
+      <p><strong>Identifiant de l'expédition:</strong> <span class="clickable" onclick="showDetails('expedition2')">Expédition 2</span></p>
+      <p><strong>Identifiant du produit:</strong> <span class="clickable" onclick="showDetails('product2')">Produit 2</span></p>
+      <p><strong>Identifiant du transporteur:</strong> <span class="clickable" onclick="showDetails('carrier2')">Transporteur 2</span></p>
+      <p><strong>Date de début:</strong> 2023-05-22</p>
+      <p><strong>Localisation actuelle:</strong> New York</p>
+      <p><strong>Date prévue d'arrivée:</strong> 2023-05-28</p>
+      <div class="map-container" id="map2"></div>
+    </div>
+
+    <div id="details-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="hideDetails()">&times;</span>
+        <div id="details-content"></div>
+      </div>
+    </div>
+
+    <script>
+      // Fonction d'initialisation de la carte Google Maps
+      function initMap() {
+        // Coordonnées pour la première expédition
+        var expedition1LatLng = { lat: 48.8566, lng: 2.3522 };
+        // Coordonnées pour la deuxième expédition
+        var expedition2LatLng = { lat: 40.7128, lng: -74.0060 };
+
+        // Création de la carte pour la première expédition
+        var map1 = new google.maps.Map(document.getElementById('map1'), {
+          zoom: 10,
+          center: expedition1LatLng
+        });
+
+        // Création de la marqueur pour la première expédition
+        var marker1 = new google.maps.Marker({
+          position: expedition1LatLng,
+          map: map1
+        });
+
+        // Création de la carte pour la deuxième expédition
+        var map2 = new google.maps.Map(document.getElementById('map2'), {
+          zoom: 10,
+          center: expedition2LatLng
+        });
+
+        // Création de la marqueur pour la deuxième expédition
+        var marker2 = new google.maps.Marker({
+          position: expedition2LatLng,
+          map: map2
+        });
+      }
+
+      // Affiche les détails correspondants à l'élément cliqué
+      function showDetails(itemId) {
+        var content = '';
+        switch (itemId) {
+          case 'expedition1':
+            content = '<h2>Expédition 1</h2><p>Informations supplémentaires sur l\'expédition 1...</p>';
+            break;
+          case 'product1':
+            content = '<h2>Produit 1</h2><p>Informations supplémentaires sur le produit 1...</p>';
+            break;
+          case 'carrier1':
+            content = '<h2>Transporteur 1</h2><p>Informations supplémentaires sur le transporteur 1...</p>';
+            break;
+          case 'expedition2':
+            content = '<h2>Expédition 2</h2><p>Informations supplémentaires sur l\'expédition 2...</p>';
+            break;
+          case 'product2':
+            content = '<h2>Produit 2</h2><p>Informations supplémentaires sur le produit 2...</p>';
+            break;
+          case 'carrier2':
+            content = '<h2>Transporteur 2</h2><p>Informations supplémentaires sur le transporteur 2...</p>';
+            break;
+        }
+
+        var modal = document.getElementById('details-modal');
+        var detailsContent = document.getElementById('details-content');
+        detailsContent.innerHTML = content;
+        modal.style.display = 'block';
+      }
+
+      // Masque la boîte de dialogue des détails
+      function hideDetails() {
+        var modal = document.getElementById('details-modal');
+        modal.style.display = 'none';
+      }
+    </script>-->
+    <!-- Inclusion de l'API Google Maps --
+    <script src="https://maps.googleapis.com/maps/api/js?key=VOTRE_CLE_API&callback=initMap" async defer></script>
+  </div>
+</body>
+</html> -->
