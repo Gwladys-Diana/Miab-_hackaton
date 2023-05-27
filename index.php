@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<!-- Boxicons -->
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
@@ -27,37 +28,37 @@
 					<span class="text"></span>Tableau de bord</a>
 			</li>
 			<li>
-				<a href="produits_pro.html">
+				<a href="produits_pro.php">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Produits proposés</span>
 				</a>
 			</li>
 			<li>
-				<a href="Produits_Commandés.html">
+				<a href="Produits_Commandés.php">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Produits Commandés</span>
 				</a>
 			</li>
 			<li>
-				<a href="Demande_de_transport.html">
+				<a href="Demande_de_transport.php">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Demande de transport</span>
 				</a>
 			</li>
 			<li>
-				<a href="Liste_des_expéditions.html">
+				<a href="Liste_des_expéditions.php">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Liste des expéditions en cours</span>
 				</a>
 			</li>
 			<li>
-				<a href="Expédition.html">
+				<a href="Expédition.php">
 					<i class="fa fa-bus"></i>
 					<span class="text">Expéditions</span>
 				</a>
 			</li>
 			<li>
-				<a href="Message.html">
+				<a href="Message.php">
 					<i class='bx bxs-message-dots' ></i>
 					<span class="text">Message</span>
 				</a>
@@ -66,13 +67,13 @@
 		</ul>
 		<ul class="side-menu">
 			<li>
-				<a href="Paramètre.html">
+				<a href="Paramètre.php">
 					<i class='bx bxs-cog' ></i>
 					<span class="text">Paramètre</span>
 				</a>
 			</li>
 			<li>
-				<a href="Deconnexion.html" class="logout">
+				<a style="cursor: pointer;" onclick="confirmerDeconnexion()" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Déconnexion</span>
 				</a>
@@ -263,7 +264,26 @@
 	</section>
 	<!-- CONTENT -->
 	
+	
+	<script>
+		function confirmerDeconnexion() {
+		
+		swal({
+			title: "Confirmation",
+			text: "Voulez-vous vraiment vous déconnecter ?",
+			icon: "warning",
+			buttons: ["Non", "Oui"],
+			dangerMode: true,
+		}).then(function(willLogout) {
+			if (willLogout) {
+			window.location.href = "Deconnexion.php"; // Rediriger vers la page de déconnexion
+			}
+		});
+		}
+  	</script>
 
+
+	<!-- SCRIPT.JS -->
 	<script src="script.js"></script>
 </body>
 </html>
