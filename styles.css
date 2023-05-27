@@ -1,0 +1,77 @@
+body{
+	background-image: url(220105486.jpg),url(hotel-entrance.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+#contenu{
+	text-align: center;
+	width : 50%;
+	height: 50;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: rgba(227, 237, 237, 0.215);
+	border: 0.1em solid #f5eded;
+	border-radius: 0.8em;
+	box-shadow:0 0 5em 0.1em black;
+	padding: 1em;
+	
+	overflow: auto;
+	
+	color: black;
+	font-family: cambria, arial, serif;
+	font-size:1em;
+}
+
+#div_para{
+	width: 40%;
+}
+#div_frm{
+	width: 50%;	
+	float:right;
+}
+
+input{
+	padding:0.8em;
+	margin-bottom: 1em;
+	border-radius: 0.3em;
+	display: block;
+	width:90%;
+}
+
+input[type=button] {
+	width:45%;
+	display:inline-block;
+}
+
+
+.msgalert{
+	padding:1em;
+	border-radius :0.8em;
+	display : none;
+	color:white;
+	background-color:red;
+}
+.inputobligatoire{
+	border: 1px solid red;
+	box-shadow: 0.1em 0.1em 1em 0.2em red;
+}
+#col{
+	background-color: rgba(255, 255, 255, 0.514);
+}
+.color{
+	color: rgb(28, 28, 247) important; 
+}
+.ib{
+	color: white;
+}
+.mimi{
+	color: white;
+}
+#contenue{
+	max-width: 1000px;
+	text-align: center;
+}
+.but.hover{
+	color: violet;
+}
+
